@@ -13,6 +13,7 @@ router.post('/addCategory', ProductCategoryController.postAddCategory);
 router.get('/getCategory', ProductCategoryController.getProductCategory);
 router.post('/deleteCategory', ProductCategoryController.destroyProductCategory);
 router.post('/addSupplier', SupplierController.postAddSupplier );
+router.post('/getSuppliers', SupplierController.getSuppliers );
 
 
 module.exports = router;

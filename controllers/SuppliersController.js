@@ -3,7 +3,7 @@ const ProductCategory = require('../models').Product_Category;
 
 exports.postAddSupplier = (req, res, next) => {
     //console.log(req.body);
-    const supplier_name = req.body.sup_name;
+    const supplier_name = req.body.sup_Name;
     const email = req.body.email;
     const contact_person = req.body.contact_person;
     const contact_person_phone = req.body.contact_person_phone;
@@ -18,8 +18,16 @@ exports.postAddSupplier = (req, res, next) => {
         }).then(result => {
             res.send(result)
         }).catch(err => {
-            console.log(err);
+            res.send(err);
         });
     })
 
+}
+
+exports.getSuppliers = (req, res) => {
+    Suppliers.findAll({
+        include: [{ model: ProductCategory, attributes :['categoryName'],through: { attributes: [] }}]
+    }).then(supplier =>{
+        res.send(supplier);
+    }).catch();
 }
